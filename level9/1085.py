@@ -9,3 +9,4 @@ y = int(xywh[1])
 w = int(xywh[2])
 h = int(xywh[3])
 
+print(min(w-x, x, h-y, y))
