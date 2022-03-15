@@ -56,3 +56,6 @@ if alphabet.count(max(alphabet)) > 1:
     print("?")
 else:
     print(chr(alphabet.index(max(alphabet)) + 97).upper())
+
+    
+## input() 받은 문자열에 대해 set을 이용하여 해당 문자열에 있는 알파벳을 뽑아내도 될 듯. (중복 제외)
