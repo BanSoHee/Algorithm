@@ -14,5 +14,5 @@ def move(n, start, end):
     move(n-1, 6-start-end, end)
 
 N = int(input()) # 원판 수 입력받기.
-print(N**2 - 1)  # 원판 이동 횟수 출력.
+print(2**N - 1)  # 원판 이동 횟수 출력.
 move(N, 1, 3)          # 원판 이동 과정 출력.
