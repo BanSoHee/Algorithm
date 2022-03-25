@@ -1,34 +1,58 @@
 ## 정렬 - 통계학
 
-from cmath import inf
+import sys
 
 list_num = []
-n = int(input()) # 홀수임.
+n = int(input())
+
+# plus_list = [0] * 4001
+# minus_list = [0] * 4001
 
 for i in range(n):
-    num = int(input())
+    num = int(sys.stdin.readline())
     list_num.append(num)
+    # if num >= 0:
+    #     plus_list[num] += 1
+    # else:
+    #     minus_list[num] += 1
 
-# 오름차순으로 정렬.
-list_num_up = sorted(list_num)
-# 중복 수 제거.
-list_num_set = list(set(list_num))
-
-# 산술 평균.
+# 산술평균.
 print(round(sum(list_num) / n))
-# 중앙값.
-print(list_num_up[int(n/2)])
-# 최빈값. => 내일 수정. 여러 개 있을 경우 최빈값 중 두 번재로 작은 값 출력.
-first = -inf
-second = -inf
-for i in list_num_set:
-    num_count = list_num_set.count(i)
-    if num_count > first:
-        first_num = i
-        first = num_count
-    elif num_count <= first and num_count >= second:
-        second_num = i
-        second = num_count
-print(second_num)
-# 범위.
+
+# 중앙값. (단, 입력한 개수는 홀수개임.)
+list_num.sort()
+print(list_num[int(n//2)])
+
+# 최빈값.
+# p_m_list = plus_list + minus_list
+# max_count = max(p_m_list)
+# max_nums = []
+# if p_m_list.count(max_count) == 1:
+#     if p_m_list.index(max_count) <= 4000:
+#         print(plus_list.index(max_count))
+#     else:
+#         print(minus_list.index(max_count) - 4001)
+# else:
+#     for i in range(4001):
+#         if plus_list[i] == max_count:
+#             max_nums.append(i)
+#         if minus_list[i] == max_count:
+#             max_nums.append(i-4001)
+#     max_nums.pop(min(max_nums))
+#     print(min(max_nums))
+
+
+from collections import Counter
+
+count_nums = Counter(list_num).most_common()
+if len(count_nums) > 1:
+    if count_nums[0][1] == count_nums[1][1]:
+        print(count_nums[1][0])
+    else:
+        print(count_nums[0][0])
+else:
+    print(count_nums[0][0])
+
+
+# 최댓값과 최솟값의 차이.
 print(max(list_num) - min(list_num))

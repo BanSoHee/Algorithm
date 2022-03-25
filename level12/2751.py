@@ -1,12 +1,12 @@
-## 정렬 - 수 정렬하기 2 => 내일.
+## 정렬 - 수 정렬하기 2
+
+import sys
 
 list_num = []
 n = int(input())
 
 for i in range(n):
-    num = int(input())
-    list_num.append(num)
+    list_num.append(int(sys.stdin.readline()))
 
-list_num.sort()
-for i in range(n):
-    print(list_num[i])
+for i in sorted(list_num):
+    sys.stdout.write(str(i) + '\n')

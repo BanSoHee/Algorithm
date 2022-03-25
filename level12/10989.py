@@ -1,12 +1,14 @@
-## 정렬 - 수 정렬하기 3 => 내일.
+## 정렬 - 수 정렬하기 3
 
-list_num = []
+import sys
+
 n = int(input())
+num_list = [0] * 10001 # 1 ~ 10000 자연수.
 
 for i in range(n):
-    num = int(input())
-    list_num.append(num)
+    num_list[int(sys.stdin.readline())] += 1
 
-list_num.sort()
-for i in range(n):
-    print(list_num[i])
+for i in range(1, 10001):
+    if num_list[i] != 0:
+        for j in range(num_list[i]):
+            print(i)
