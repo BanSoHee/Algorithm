@@ -1,43 +1,16 @@
-## 완전탐색 - 소수 찾기 =============> 이거 다시.
+## 완전탐색 - 소수 찾기(isprime func, permutations 이용)
 
-# 소수 판별 func.
+## 소수 판별 func.
 def isprime(n):
-    if n == 0: return False
-    if n == 1: return False
-    if n == 2: return True
-    for i in (2, int(n**(1/2))+1):
-        if n % i == 0:
-            return False
-    return True
+    if n == 0 or n == 1:
+        return False
+    else:
+        for i in range(2, int(n**0.5) + 1):
+            if n % i == 0:
+                return False
+        return True
 
-"""
-# dfs func.
-s = []
-count = 0
-
-def dfs():
-    global l, s, count
-
-    if len(s) == 0:
-        pass
-    elif isprime(int(''.join(s))):
-        print(int(''.join(s))) # <------------- 숫자 확인. 왜 71 없을....까.....ㅠㅠㅠㅠㅠㅠ
-        count += 1
-        return
-
-    for i in l:
-        if i in s:
-            continue
-        s.append(i)
-        dfs()
-        s.pop()
-
-def solution(numbers):
-    global l
-    l = list(numbers)
-    dfs()
-    return count
-"""
+## 탐색 func.
 from itertools import permutations
 
 def solution(numbers):
@@ -47,12 +20,11 @@ def solution(numbers):
     for i in range(1, len(numbers)+1):
         l = list(map(''.join, permutations(list(numbers), i)))
         total_l += l
-    
+
     for i in list(set(list(map(int, total_l)))):
         if isprime(i):
             count += 1
             
     return count
-
 
 print(solution("011"))
